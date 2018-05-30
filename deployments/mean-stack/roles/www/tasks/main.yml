@@ -1,14 +1,7 @@
 ---
 
-- name: Install node-gyp globally
-  include_role: 
-    name: root
-    tasks_from: node-gyp.yml
-  become: true
-  become_user: root
-
 - include: iquippo.yml
   tags: iquippo
   become: true
-  become_user: atul.agrawal
+  become_user: ec2-user
 

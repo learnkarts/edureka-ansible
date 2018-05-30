@@ -4,15 +4,4 @@
   hosts: "{{ host }}"
   roles: 
     - www
-  #become: true
-  #become_user: www-data
-  tags: [site-deployment,iquippo,mean-test]
 
-
-- name: Building Mysql 
-  hosts: "{{ host }}"
-  roles: 
-    - db
-#  become: true
-#  become_user: www-data
-  tags: [db]
