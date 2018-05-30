@@ -6,7 +6,7 @@
   become_method: sudo
   
   vars:
-    ansible_sudo_pass: "{{ sudo_pass }}"
+    #ansible_sudo_pass: "{{ sudo_pass }}"
     temp_folder: /tmp
 
   tasks:
@@ -28,7 +28,7 @@
     
 
     #- name: MongoDB | Add repository
-    ##  apt_repository:
+    #  apt_repository:
     #    filename: '/etc/apt/sources.list.d/mongodb-org-3.2.list'
     #    repo: "{{ mongo_repo }}"
     #    state: present
@@ -95,28 +95,28 @@
       become: true
       become_user: root
 
-    - name: Node.js | Install bower and gulp globally
-      npm: name={{ item }} state=present global=yes
-      with_items:
-        - bower
-        - grunt-cli
-        - pm2
+    # - name: Node.js | Install bower and gulp globally
+    #   npm: name={{ item }} state=present global=yes
+    #   with_items:
+    #     - bower
+    #     - grunt-cli
+    #     - pm2
 
-    - name: Nginx Installation | Install Nginx
-      apt:
-        name: nginx
-        state: present
-        update_cache: yes
-      become: true
-      become_user: root    
+    # - name: Nginx Installation | Install Nginx
+    #   apt:
+    #     name: nginx
+    #     state: present
+    #     update_cache: yes
+    #   become: true
+    #   become_user: root    
 
-    #  Only execute when require
-    - name: copy nginx.conf to the server
-      template: src={{ item }} dest=/etc/nginx/sites-available/"{{ build }}.conf"
-      with_fileglob:
-        - ../templates/nginx.conf.j2
-      become: true
-      become_user: root
+    # #  Only execute when require
+    # - name: copy nginx.conf to the server
+    #   template: src={{ item }} dest=/etc/nginx/sites-available/"{{ build }}.conf"
+    #   with_fileglob:
+    #     - ../templates/nginx.conf.j2
+    #   become: true
+    #   become_user: root
 
     #- name: delete default virtualhost
     #  file: path=/etc/nginx/sites-enabled/default state=absent
@@ -129,20 +129,20 @@
     #    - dest=/etc/nginx/sites-available/mysite.conf
     #  sudo: yes
 
-    - name: link mysite site-enabled
-      file: path=/etc/nginx/sites-enabled/ src=/etc/nginx/sites-available/{{ build }}.conf state=link
-      become: true
-      become_user: root
+    # - name: link mysite site-enabled
+    #   file: path=/etc/nginx/sites-enabled/ src=/etc/nginx/sites-available/{{ build }}.conf state=link
+    #   become: true
+    #   become_user: root
 
-    - name: Restart nginx service
-      command: service nginx restart
-      become: true
-      become_user: root
+    # - name: Restart nginx service
+    #   command: service nginx restart
+    #   become: true
+    #   become_user: root
 
 
   
-  handlers:
-    - name: start nginx
-      service: name=nginx enables=yes state=started
+  # handlers:
+  #   - name: start nginx
+  #     service: name=nginx enables=yes state=started
 
     
