@@ -1,3 +1,2 @@
-# infra-automation
+Case Studies for ansible course
 
-This contain all the automation tasks,scripts and docs.
